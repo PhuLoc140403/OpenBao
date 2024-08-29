@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manage Salaries</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Manage Salaries</h1>
+      <form method="POST" action="{{ url_for('main.manage_salaries') }}">
+        {{ form.hidden_tag() }}
+
+        <div class="form-group">
+          {{ form.employee_id.label }}<br />
+          {{ form.employee_id(class="form-control") }} {% for error in
+          form.employee_id.errors %}
+          <span class="text-danger">{{ error }}</span>
+          {% endfor %}
+        </div>
+
+        <div class="form-group">
+          {{ form.month.label }}<br />
+          {{ form.month(class="form-control") }} {% for error in
+          form.month.errors %}
+          <span class="text-danger">{{ error }}</span>
+          {% endfor %}
+        </div>
+
+        <div class="form-group">
+          {{ form.year.label }}<br />
+          {{ form.year(class="form-control") }} {% for error in form.year.errors
+          %}
+          <span class="text-danger">{{ error }}</span>
+          {% endfor %}
+        </div>
+
+        <div class="form-group">
+          {{ form.basic_salary.label }}<br />
+          {{ form.basic_salary(class="form-control") }} {% for error in
+          form.basic_salary.errors %}
+          <span class="text-danger">{{ error }}</span>
+          {% endfor %}
+        </div>
+
+        <div class="form-group">
+          {{ form.bonus.label }}<br />
+          {{ form.bonus(class="form-control") }} {% for error in
+          form.bonus.errors %}
+          <span class="text-danger">{{ error }}</span>
+          {% endfor %}
+        </div>
+
+        <div class="form-group">
+          {{ form.deduction.label }}<br />
+          {{ form.deduction(class="form-control") }} {% for error in
+          form.deduction.errors %}
+          <span class="text-danger">{{ error }}</span>
+          {% endfor %}
+        </div>
+
+        <div class="form-group">{{ form.submit(class="btn btn-primary") }}</div>
+      </form>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Manage Departments</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles.css') }}"
+    />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Manage Departments</h1>
+
+      <!-- Flash messages -->
+      {% with messages = get_flashed_messages() %} {% if messages %}
+      <ul class="flashes">
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %} {% endwith %}
+
+      <!-- Department Form -->
+      <form method="POST" action="{{ url_for('main.manage_departments') }}">
+        {{ form.hidden_tag() }}
+
+        <div class="form-group">
+          <label for="department_id">Department ID</label>
+          {{ form.department_id(class="form-control") }}
+        </div>
+
+        <div class="form-group">
+          <label for="department_name">Department Name</label>
+          {{ form.department_name(class="form-control") }}
+        </div>
+
+        <div class="form-group">
+          <label for="description">Description</label>
+          {{ form.description(class="form-control") }}
+        </div>
+
+        <div class="form-group">
+          <label for="manager">Manager</label>
+          {{ form.manager(class="form-control") }}
+        </div>
+
+        <div class="form-group">{{ form.submit(class="btn btn-primary") }}</div>
+      </form>
+
+      <a href="{{ url_for('main.index') }}">Back to Home</a>
+    </div>
+  </body>
+</html>
